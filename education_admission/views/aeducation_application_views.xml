@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="education_application_view_list" model="ir.ui.view">
+        <field name="name">education.application.list</field>
+        <field name="model">education.application</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="student_name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="education_application_view_form" model="ir.ui.view">
+        <field name="name">education.application.form</field>
+        <field name="model">education.application</field>
+        <field name="arch" type="xml">
+            <form string="Application Form">
+                <header invisible="id == False">
+                    <button
+                        name="confirm_application"
+                        string="Confirm"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="(state != 'new') or (id == False)"
+                        confirm="Are you sure you want to mark this application as confirm?"
+                    />
+                    <button
+                        name="enroll_application"
+                        string="Enroll Now"
+                        type="object"
+                        class="oe_highlight bg-success"
+                        invisible="(state != 'confirm') or (id == False) "
+                    />
+                    <button
+                        name="456"
+                        string="Cancel"
+                        type="action"
+                        invisible="(state != 'new') or (id == False)"
+                        confirm="Are you sure you want to cancel this application?"
+                        context="{'default_name':'cancel'}"
+                    />
+
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="new,confirm,enroll"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="get_student_id"
+                            icon="fa-address-book"
+                            type="object"
+                            class="oe_stat_button"
+                            string="Student"
+                            invisible="student_id == False"
+                        />
+                    </div>
+                    <field
+                        name="student_image"
+                        widget="image"
+                        class="oe_avatar"
+                        readonly="state != 'new'"
+                    />
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Name.." readonly="1" />
+                        </h1>
+                    </div>
+                    <group name="student_header">
+                        <group>
+                            <field name="student_name" readonly="state != 'new'" />
+                            <field
+                                name="email"
+                                readonly="state != 'new'"
+                                widget="email"
+                            />
+                            <field
+                                name="parent_email"
+                                readonly="state != 'new'"
+                                widget="email"
+                            />
+                            <field name="gender" readonly="state != 'new'" />
+                            <field name="phone" readonly="state != 'new'" />
+                            <field name="blood_group" readonly="state != 'new'" />
+                            <field
+                                name="medical_disability"
+                                readonly="state != 'new'"
+                            />
+                            <field
+                                name="known_medical_disability"
+                                invisible="medical_disability != 'yes'"
+                                readonly="state != 'new'"
+                            />
+                        </group>
+                        <group name="order_details">
+                            <field name="application_date" readonly="state != 'new'" />
+                            <field name="dob" readonly="state != 'new'" />
+                            <field
+                                name="company_id"
+                                options="{'no_create_edit': True, 'no_create': True, 'no_edit': True}"
+                                readonly="is_single_company"
+                                groups="base.group_multi_company"
+                            />
+                            <field
+                                name="grade_id"
+                                options="{'no_create_edit': True, 'no_create': True, 'no_edit': True}"
+                                readonly="state != 'new'"
+                            />
+                            <label for="street" string="Address" />
+                            <div class="o_address_format">
+                                <field
+                                    name="street"
+                                    placeholder="Street..."
+                                    class="o_address_street"
+                                    readonly="state != 'new'"
+                                />
+                                <field
+                                    name="street2"
+                                    placeholder="Street 2..."
+                                    class="o_address_street"
+                                    readonly="state != 'new'"
+                                />
+                                <field
+                                    name="city"
+                                    placeholder="City"
+                                    class="o_address_city"
+                                    readonly="state != 'new'"
+                                />
+                                <field
+                                    name="state_id"
+                                    class="o_address_state"
+                                    placeholder="State"
+                                    options="{'no_open': True, 'no_quick_create': True}"
+                                    context="{'default_country_id': country_id}"
+                                    readonly="state != 'new'"
+                                />
+                                <field
+                                    name="zip"
+                                    placeholder="ZIP"
+                                    class="o_address_zip"
+                                    readonly="state != 'new'"
+                                />
+                                <field
+                                    name="country_id"
+                                    placeholder="Country"
+                                    class="o_address_country"
+                                    options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+                                    readonly="state != 'new'"
+                                />
+                            </div>
+                            <!-- <field name="student_id" invisible="1"/> -->
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="parent_section" string="Parents Details">
+                            <group>
+                                <group
+                                    name="father_details"
+                                    string="Father's Information"
+                                >
+                                    <field
+                                        name="father_name"
+                                        readonly="state != 'new'"
+                                        string="Name"
+                                    />
+                                    <field
+                                        name="father_phone"
+                                        readonly="state != 'new'"
+                                        string="Mobile"
+                                    />
+                                    <field
+                                        name="father_occupation"
+                                        readonly="state != 'new'"
+                                        string="Occupation"
+                                    />
+                                </group>
+                                <group
+                                    name="mother_details"
+                                    string="Mother's Information"
+                                >
+                                    <field
+                                        name="mother_name"
+                                        readonly="state != 'new'"
+                                        string="Name"
+                                    />
+                                    <field
+                                        name="mother_phone"
+                                        readonly="state != 'new'"
+                                        string="Mobile"
+                                    />
+                                    <field
+                                        name="mother_occupation"
+                                        readonly="state != 'new'"
+                                        string="Occupation"
+                                    />
+                                </group>
+                            </group>
+                        </page>
+                        <page name="queries" string="Admission Query">
+                            <field
+                                name="queries"
+                                colspan="2"
+                                nolabel="1"
+                                placeholder="This is for admission query"
+                            />
+                        </page>
+                        <page name="student_documents" string="Documents">
+                            <field
+                                name="attachment_ids"
+                                widget="many2many_binary"
+                                readonly="state in ['enroll', 'cancel']"
+                            />
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="education_application_action" model="ir.actions.act_window">
+        <field name="name">education_application</field>
+        <field name="res_model">education.application</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
