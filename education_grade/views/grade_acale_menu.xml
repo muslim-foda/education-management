@@ -1,0 +1,9 @@
+<odoo>
+    <!-- Menu: put under Configuration -->
+    <menuitem
+        id="menu_grade_scale"
+        name="Grade Scale"
+        parent="education_core.education_core_menu_config"
+        action="action_grade_scale"
+    />
+</odoo>

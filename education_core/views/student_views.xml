@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="student_view_list" model="ir.ui.view">
+        <field name="name">student.list</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="student_view_form" model="ir.ui.view">
+        <field name="name">student.form</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1" />
+                        </h1>
+                    </div>
+                    <widget
+                        name="web_ribbon"
+                        title="Portal"
+                        bg_color="text-bg-success"
+                        invisible="not student_active"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="text-bg-danger"
+                        invisible="active"
+                    />
+                    <div class="d-flex flex-column flex-sm-row align-items-center">
+                        <div class="o_employee_avatar ms-2 p-0">
+                            <field
+                                name="image_1920"
+                                widget="image"
+                                class="m-0"
+                                options="{
+                                    'size': [128, 158],
+                                    'zoom': True,
+                                    'preview_image': 'avatar_128',
+                                    'img_class': 'border rounded h-100 object-fit-contain'
+                                }"
+                            />
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-7 col-lg-8 px-4">
+                            <div class="oe_title mw-100 ps-0 pe-sm-2">
+                                <h1 class="d-flex flex-row align-items-center">
+                                    <field
+                                        name="name"
+                                        placeholder="student Name"
+                                        required="1"
+                                        style="font-size: min(4vw, 2.6rem);"
+                                    />
+                                </h1>
+                                <h5 class="d-flex align-items-baseline mb-0">
+                                    <i
+                                        class="fa fa-envelope fa-fw me-1 text-primary"
+                                        title="Work Email"
+                                    />
+                                    <field
+                                        name="email"
+                                        string="student Email"
+                                        widget="email"
+                                        placeholder="e.g. johndoe@example.com"
+                                        class="w-100 w-sm-75"
+                                    />
+                                </h5>
+                                <h5 class="d-flex align-items-baseline mb-0">
+                                    <i
+                                        class="fa fa-phone fa-fw me-1 text-primary"
+                                        title="Work Phone"
+                                    />
+                                    <field
+                                        name="phone"
+                                        string="Work Phone"
+                                        widget="phone"
+                                        placeholder="student Phone"
+                                        class="w-100 w-sm-75"
+                                    />
+                                </h5>
+                                <h5>
+                                    <i
+                                        class="fa fa-tags fa-fw me-1 text-primary"
+                                        title="Tags"
+                                    />
+                                    <field
+                                        name="category_ids"
+                                        widget="many2many_tags"
+                                        options="{'color_field': 'color', 'no_create_edit': True}"
+                                        placeholder="e.g. Founder, Motorized, Building B, ..."
+                                    />
+                                </h5>
+                                <h5
+                                    class="d-flex align-items-baseline mb-0"
+                                    invisible="not id"
+                                >
+                                    <i
+                                        class="fa fa-id-card fa-fw me-1 text-primary"
+                                        title="Student Code"
+                                    />
+                                    <field
+                                        name="student_code"
+                                        string="Student ID"
+                                        readonly="1"
+                                        class="w-100 w-sm-75"
+                                    />
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <group>
+                        <group>
+                            <label for="street" string="Address" />
+                            <div class="o_address_format">
+                                <field
+                                    name="street"
+                                    class="o_address_street"
+                                    placeholder="Street..."
+                                />
+                                <field
+                                    name="street2"
+                                    class="o_address_street"
+                                    placeholder="Street 2..."
+                                />
+                                <field
+                                    name="city"
+                                    class="o_address_city"
+                                    placeholder="City"
+                                />
+                                <field
+                                    name="state_id"
+                                    class="o_address_state"
+                                    placeholder="State"
+                                    options="{'no_open': True}"
+                                />
+                                <field
+                                    name="zip"
+                                    class="o_address_zip"
+                                    placeholder="ZIP"
+                                />
+                                <field
+                                    name="country_id"
+                                    class="o_address_country"
+                                    placeholder="Country"
+                                    options="{'no_open': True, 'no_create': True}"
+                                />
+                            </div>
+                        </group>
+                        <group>
+                            <field name="birth_date" />
+                            <field name="gender" widget="radio" />
+                            <field name="student_active" invisible="1" />
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Father's Information">
+                            <field name="father_name" string="Name" />
+                            <field name="father_phone" string="Mobile" />
+                            <field name="father_occupation" string="Occupation" />
+                        </group>
+                        <group string="Mother's Information">
+                            <field name="mother_name" string="Name" />
+                            <field name="mother_phone" string="Mobile" />
+                            <field name="mother_occupation" string="Occupation" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="student_information" string="student" />
+                    </notebook>
+                </sheet>
+
+                <chatter />
+            </form>
+        </field>
+    </record>
+    <record id="student_kanban" model="ir.ui.view">
+        <field name="name">studentkanban</field>
+        <field name="model">student</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <kanban class="o_hr_employee_kanban" sample="1" duplicate="false">
+                <field name="name" />
+                <field name="image_128" />
+                <field name="company_id" />
+                <templates>
+                    <t t-name="card" class="flex-row">
+                        <aside class="o_kanban_aside_full">
+                            <t t-if="record.image_1024.raw_value">
+                                <field
+                                    name="image_1024"
+                                    widget="background_image"
+                                    options="{'zoom': true, 'zoom_delay': 1000, 'preview_image':'image_128'}"
+                                    class="d-block position-relative"
+                                />
+                            </t>
+                            <t t-elif="record.image_128.raw_value">
+                                <field
+                                    name="avatar_128"
+                                    widget="background_image"
+                                    options="{'zoom': true, 'zoom_delay': 1000}"
+                                    class="d-block position-relative"
+                                />
+                            </t>
+                            <div
+                                t-else=""
+                                class="d-flex align-items-center justify-content-center bg-100 bg-gradient"
+                            >
+                                <svg
+                                    class="w-75 h-75 opacity-50"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g fill="currentColor">
+                                        <path
+                                            d="M 10 11 C 4.08 11 2 14 2 16 L 2 19 L 18 19 L 18 16 C 18 14 15.92 11 10 11 Z"
+                                        />
+                                        <circle cx="10" cy="5.5" r="4.5" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </aside>
+                        <div
+                            class="ribbon ribbon-top-right"
+                            invisible="not student_active"
+                        >
+                            <span class="text-bg-success">Portal</span>
+                        </div>
+                        <main class="ms-2">
+                            <div>
+                                <field
+                                    class="fw-bold fs-5"
+                                    name="name"
+                                    placeholder="student Name"
+                                />
+                            </div>
+                            <div t-if="record.email.raw_value" class="text-truncate">
+                                <i
+                                    class="fa fa-envelope fa-fw me-1 text-primary"
+                                    title="Work Email"
+                                />
+                                <field name="email" />
+                            </div>
+                            <div t-if="record.phone.raw_value" class="text-truncate">
+                                <i
+                                    class="fa fa-phone fa-fw me-1 text-primary"
+                                    title="Phone"
+                                />
+                                <field name="phone" />
+                            </div>
+                            <div t-if="record.student_code.raw_value">
+                                <i
+                                    class="fa fa-id-card fa-fw me-1 text-primary"
+                                    title="Student ID"
+                                />
+                                <field name="student_code" />
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="student_action" model="ir.actions.act_window">
+        <field name="name">students</field>
+        <field name="res_model">student</field>
+        <field name="view_mode">list,form,kanban</field>
+    </record>
+
+    <record id="student_action_kanban" model="ir.actions.act_window.view">
+        <field name="sequence" eval="10" />
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="student_kanban" />
+        <field name="act_window_id" ref="student_action" />
+    </record>
+</odoo>

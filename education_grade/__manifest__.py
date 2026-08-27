@@ -1,0 +1,20 @@
+{
+    "name": "Education Grade",
+    "version": "19.0.1.0.0",
+    "category": "Tools",
+    "summary": "Auto-generated module",
+    "author": "Muslim Foda",
+    "maintainer": "",
+    "website": "https://github.com/muslim-foda/Education",
+    "depends": ["base", "education_core"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/grade_scale_views.xml",
+        "views/grade_acale_menu.xml",
+    ],
+    "assets": {},
+    "license": "LGPL-3",
+    "installable": True,
+    "auto_install": False,
+    "application": True,
+}

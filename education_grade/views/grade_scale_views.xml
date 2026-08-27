@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- List View -->
+    <record id="view_grade_scale_list" model="ir.ui.view">
+        <field name="name">grade.scale.list</field>
+        <field name="model">grade.scale</field>
+        <field name="arch" type="xml">
+            <list string="Grade Scales">
+                <field name="name" />
+                <field name="gpa_calculation" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_grade_scale_form" model="ir.ui.view">
+        <field name="name">grade.scale.form</field>
+        <field name="model">grade.scale</field>
+        <field name="arch" type="xml">
+            <form string="Grade Scale">
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="e.g. Standard GPA Scale" />
+                        <field name="gpa_calculation" />
+                    </group>
+                    <notebook>
+                        <page string="Scale Lines" name="scale_lines">
+                            <field name="scale_line_ids">
+                                <list editable="bottom">
+                                    <field name="symbol" />
+                                    <field name="max_percent" />
+                                    <field name="min_percent" />
+                                    <field name="points" />
+                                    <field name="symbol_condition" />
+                                    <field name="effort" />
+                                    <field name="short_summary" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_grade_scale_search" model="ir.ui.view">
+        <field name="name">grade.scale.search</field>
+        <field name="model">grade.scale</field>
+        <field name="arch" type="xml">
+            <search string="Search Grade Scale">
+                <field name="name" />
+                <filter
+                    string="GPA Calculation"
+                    name="gpa_calculation"
+                    domain="[('gpa_calculation', '=', True)]"
+                />
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_grade_scale" model="ir.actions.act_window">
+        <field name="name">Grade Scale</field>
+        <field name="res_model">grade.scale</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_grade_scale_search" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Grade Scale
+            </p>
+        </field>
+    </record>
+</odoo>

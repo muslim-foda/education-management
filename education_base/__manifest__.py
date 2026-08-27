@@ -1,5 +1,5 @@
 {
-    "name": "Education Admission",
+    "name": "Education base",
     "version": "19.0.1.0.0",
     "category": "Tools",
     "summary": "Manage education admission applications",
@@ -9,13 +9,9 @@
     "depends": [
         "base",
         "mail",
-        "education_core",
     ],
     "data": [
         "security/ir.model.access.csv",
-        "views/education_menu_views.xml",
-        "views/education_enrollment_views.xml",
-        "views/aeducation_application_views.xml",
     ],
     "assets": {},
     "license": "LGPL-3",

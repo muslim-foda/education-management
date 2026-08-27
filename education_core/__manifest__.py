@@ -1,0 +1,22 @@
+{
+    "name": "Education Core",
+    "version": "19.0.1.0.0",
+    "category": "Tools",
+    "summary": "Auto-generated module",
+    "author": "Muslim Foda",
+    "maintainer": "",
+    "website": "https://github.com/muslim-foda/Education",
+    "depends": ["base", "mail", "education_base"],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/res_config_setting_view.xml",
+        "views/student_views.xml",
+        "data/ir_sequence.xml",
+        "menu/education_core_menu.xml",
+    ],
+    "assets": {},
+    "license": "LGPL-3",
+    "installable": True,
+    "auto_install": False,
+    "application": True,
+}

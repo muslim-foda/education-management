@@ -31,14 +31,14 @@
                         class="oe_highlight bg-success"
                         invisible="(state != 'confirm') or (id == False) "
                     />
-                    <button
+                    <!-- <button
                         name="456"
                         string="Cancel"
                         type="action"
                         invisible="(state != 'new') or (id == False)"
                         confirm="Are you sure you want to cancel this application?"
                         context="{'default_name':'cancel'}"
-                    />
+                    /> -->
 
                     <field
                         name="state"
@@ -47,7 +47,7 @@
                     />
                 </header>
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
+                    <!-- <div class="oe_button_box" name="button_box">
                         <button
                             name="get_student_id"
                             icon="fa-address-book"
@@ -56,18 +56,18 @@
                             string="Student"
                             invisible="student_id == False"
                         />
-                    </div>
+                    </div> -->
                     <field
                         name="student_image"
                         widget="image"
                         class="oe_avatar"
                         readonly="state != 'new'"
                     />
-                    <div class="oe_title">
+                    <!-- <div class="oe_title">
                         <h1>
                             <field name="name" placeholder="Name.." readonly="1" />
                         </h1>
-                    </div>
+                    </div> -->
                     <group name="student_header">
                         <group>
                             <field name="student_name" readonly="state != 'new'" />
@@ -96,18 +96,18 @@
                         </group>
                         <group name="order_details">
                             <field name="application_date" readonly="state != 'new'" />
-                            <field name="dob" readonly="state != 'new'" />
-                            <field
+                            <field name="birth_date" readonly="state != 'new'" />
+                            <!-- <field
                                 name="company_id"
                                 options="{'no_create_edit': True, 'no_create': True, 'no_edit': True}"
                                 readonly="is_single_company"
                                 groups="base.group_multi_company"
-                            />
-                            <field
+                            /> -->
+                            <!-- <field
                                 name="grade_id"
                                 options="{'no_create_edit': True, 'no_create': True, 'no_edit': True}"
                                 readonly="state != 'new'"
-                            />
+                            /> -->
                             <label for="street" string="Address" />
                             <div class="o_address_format">
                                 <field

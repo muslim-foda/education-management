@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="education_core_menu_root" name="Education" />
+
+    <menuitem
+        id="education_core_menu_student"
+        name="Stuednt"
+        parent="education_core_menu_root"
+        action="student_action"
+    />
+
+    <!-- menu_config -->
+
+    <menuitem
+        id="education_core_menu_config"
+        name="Configuration"
+        parent="education_core_menu_root"
+        action="education_core_config_settings_action"
+        sequence="100"
+    />
+</odoo>

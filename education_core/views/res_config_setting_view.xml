@@ -1,0 +1,24 @@
+<odoo>
+    <record id="education_core_res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">education.core.res.config.settings.view.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="Academy" name="my_acadmy">
+                    <block title="Education Settings" />
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="education_core_config_settings_action" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_id" ref="education_core_res_config_settings_view_form" />
+        <field name="view_mode">form</field>
+        <field name="context">
+    {'module': 'education_core'}
+</field>
+    </record>
+</odoo>

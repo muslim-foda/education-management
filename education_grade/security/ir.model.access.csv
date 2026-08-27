@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_grade_scale,access_grade_scale,model_grade_scale,base.group_user,1,1,1,1
+access_grade_scale_line,access_grade_scale_line,model_grade_scale_line,base.group_user,1,1,1,1
+access_grade_scale_line_manager,grade_scale_line_manager,model_grade_scale_line,,1,1,1,1

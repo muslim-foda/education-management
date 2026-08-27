@@ -1,0 +1,8 @@
+<odoo>
+    <menuitem
+        id="education_application_form"
+        name="Applications"
+        parent="education_core.education_core_menu_root"
+        action="education_application_action"
+    />
+</odoo>
