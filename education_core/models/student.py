@@ -6,43 +6,39 @@ from odoo import api, fields, models
 class Student(models.Model):
     _name = "student"
     _inherit = ["mail.thread", "mail.activity.mixin", "sequence.mixin"]
+    _description = "Student"
     _rec_name = "name"
     _inherits = {"res.partner": "partner_id"}
     _sequence_code = "student"
 
-    category_ids = fields.Many2many("res.partner.category", string="Tags")
+    # Fields
+    name = fields.Char()
     partner_id = fields.Many2one(
         "res.partner",
         required=True,
         ondelete="cascade",
     )
+    category_ids = fields.Many2many("res.partner.category")
     student_code = fields.Char(
         readonly=True,
         copy=False,
         index=True,
     )
     student_active = fields.Boolean(
-        string="Portal Access",
         default=False,
     )
-
-    father_name = fields.Char(string="Father's Name")
-    father_phone = fields.Char(string="Father's Phone")
-    father_occupation = fields.Char(string="Father's Occupation")
-    mother_name = fields.Char(string="Mother's Name")
-    mother_phone = fields.Char(string="Mother's Phone")
-    mother_occupation = fields.Char(string="Mother's Occupation")
-
-    birth_date = fields.Date(string="Date of Birth")
+    father_name = fields.Char()
+    father_phone = fields.Char()
+    father_occupation = fields.Char()
+    mother_name = fields.Char()
+    mother_phone = fields.Char()
+    mother_occupation = fields.Char()
+    birth_date = fields.Date()
     gender = fields.Selection(
         [
             ("male", "Male"),
             ("female", "Female"),
         ],
-    )
-    _student_name_unique = models.Constraint(
-        "unique(name)",
-        "Student name must be unique!",
     )
     sequence_id = fields.Many2one("ir.sequence")
     bio = fields.Text()
@@ -50,20 +46,29 @@ class Student(models.Model):
         default=False,
     )
 
-    def _generate_student_code(self):
-        """Generate a unique 8-digit student code."""
+    # SQL constraints
+    _student_name_unique = models.Constraint(
+        "unique(name)",
+        "Student name must be unique!",
+    )
 
-        while True:
-            code = "".join(str(secrets.randbelow(10)) for _ in range(8))
-            if not self.search([("student_code", "=", code)], limit=1):
-                return code
-
+    # CRUD methods
     @api.model_create_multi
     def create(self, vals_list):
-        """Create students and generate a unique 8-digit code when not provided."""
-
+        """Create students and generate a student code when needed."""
         for vals in vals_list:
             if not vals.get("student_code"):
                 vals["student_code"] = self._generate_student_code()
 
         return super().create(vals_list)
+
+    # Business methods
+    def _generate_student_code(self):
+        """Generate a unique 8-digit student code."""
+        while True:
+            student_code = "".join(str(secrets.randbelow(10)) for _ in range(8))
+            if not self.search(
+                [("student_code", "=", student_code)],
+                limit=1,
+            ):
+                return student_code

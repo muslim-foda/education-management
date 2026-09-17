@@ -12,6 +12,9 @@
         "views/grade_scale_views.xml",
         "views/grade_acale_menu.xml",
     ],
+    "demo": [
+        "demo/grade_scale_demo.xml",
+    ],
     "assets": {},
     "license": "LGPL-3",
     "installable": True,

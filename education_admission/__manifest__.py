@@ -13,9 +13,9 @@
     ],
     "data": [
         "security/ir.model.access.csv",
-        "views/education_menu_views.xml",
         "views/education_enrollment_views.xml",
         "views/aeducation_application_views.xml",
+        "views/education_menu_views.xml",
     ],
     "assets": {},
     "license": "LGPL-3",

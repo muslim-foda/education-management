@@ -8,6 +8,8 @@
             <list string="Grade Scales">
                 <field name="name" />
                 <field name="gpa_calculation" />
+                <field name="create_uid" />
+                <field name="create_date" />
             </list>
         </field>
     </record>
@@ -18,20 +20,62 @@
         <field name="model">grade.scale</field>
         <field name="arch" type="xml">
             <form string="Grade Scale">
+                <header>
+                    <button
+                        name="action_confirm"
+                        type="object"
+                        string="Confirm"
+                        class="btn-primary"
+                        invisible="state != 'draft'"
+                    />
+
+                    <button
+                        name="action_reset_to_draft"
+                        type="object"
+                        string="Reset to Draft"
+                        invisible="state != 'confirmed'"
+                    />
+
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,confirmed"
+                    />
+                </header>
+
                 <sheet>
                     <group>
-                        <field name="name" placeholder="e.g. Standard GPA Scale" />
-                        <field name="gpa_calculation" />
+                        <field
+                            name="name"
+                            placeholder="e.g. Standard GPA Scale"
+                            readonly="state == 'confirmed'"
+                        />
+                        <field name="gpa_calculation" readonly="state == 'confirmed'" />
                     </group>
                     <notebook>
                         <page string="Scale Lines" name="scale_lines">
-                            <field name="scale_line_ids">
+                            <field
+                                name="scale_line_ids"
+                                readonly="state == 'confirmed'"
+                            >
                                 <list editable="bottom">
                                     <field name="symbol" />
-                                    <field name="max_percent" />
-                                    <field name="min_percent" />
-                                    <field name="points" />
-                                    <field name="symbol_condition" />
+                                    <field
+                                        name="max_percent"
+                                        column_invisible="not parent.gpa_calculation"
+                                    />
+                                    <field
+                                        name="min_percent"
+                                        column_invisible=" not parent.gpa_calculation"
+                                    />
+                                    <field
+                                        name="points"
+                                        column_invisible=" not parent.gpa_calculation"
+                                    />
+                                    <field
+                                        name="symbol_condition"
+                                        column_invisible=" not parent.gpa_calculation"
+                                    />
                                     <field name="effort" />
                                     <field name="short_summary" />
                                 </list>

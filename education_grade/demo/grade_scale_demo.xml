@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 <muslim>
+      <muslimfoda1@gmail.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html) -->
+<odoo noupdate="1">
+    <!-- ============================================================
+         Grade Scale 1: Primary Grade Scale (full 0-100% coverage)
+         ============================================================ -->
+    <record id="grade_scale_primary" model="grade.scale">
+        <field name="name">Primary Grade Scale</field>
+        <field name="gpa_calculation" eval="True" />
+    </record>
+
+    <record id="grade_scale_primary_line_a_plus" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_primary" />
+        <field name="symbol">A+</field>
+        <field name="max_percent">100.00</field>
+        <field name="min_percent">90.00</field>
+        <field name="points">10.00</field>
+        <field name="symbol_condition">Outstanding</field>
+        <field name="effort">excellent</field>
+    </record>
+
+    <record id="grade_scale_primary_line_a" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_primary" />
+        <field name="symbol">A</field>
+        <field name="max_percent">89.99</field>
+        <field name="min_percent">80.00</field>
+        <field name="points">9.00</field>
+        <field name="symbol_condition">Excellent</field>
+        <field name="effort">good</field>
+    </record>
+
+    <record id="grade_scale_primary_line_b_plus" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_primary" />
+        <field name="symbol">B+</field>
+        <field name="max_percent">79.99</field>
+        <field name="min_percent">70.00</field>
+        <field name="points">8.00</field>
+        <field name="symbol_condition">Very Good</field>
+        <field name="effort">good</field>
+    </record>
+
+    <record id="grade_scale_primary_line_b" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_primary" />
+        <field name="symbol">B</field>
+        <field name="max_percent">69.99</field>
+        <field name="min_percent">60.00</field>
+        <field name="points">7.00</field>
+        <field name="symbol_condition">Good</field>
+        <field name="effort">satisfactory</field>
+    </record>
+
+    <record id="grade_scale_primary_line_c_plus" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_primary" />
+        <field name="symbol">C+</field>
+        <field name="max_percent">59.99</field>
+        <field name="min_percent">40.00</field>
+        <field name="points">6.00</field>
+        <field name="symbol_condition">Fair</field>
+        <field name="effort">poor</field>
+    </record>
+
+    <record id="grade_scale_primary_line_c" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_primary" />
+        <field name="symbol">C</field>
+        <field name="max_percent">39.99</field>
+        <field name="min_percent">20.00</field>
+        <field name="points">5.00</field>
+        <field name="symbol_condition">Needs Improvement</field>
+        <field name="effort">needs_improvement</field>
+    </record>
+
+    <record id="grade_scale_primary_line_d_plus" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_primary" />
+        <field name="symbol">D+</field>
+        <field name="max_percent">19.99</field>
+        <field name="min_percent">0.00</field>
+        <field name="points">4.00</field>
+        <field name="symbol_condition">Unsatisfactory</field>
+        <field name="effort">unsatisfactory</field>
+    </record>
+
+    <!-- Confirm the primary scale since it fully covers 0-100% -->
+    <function
+        model="grade.scale"
+        name="action_confirm"
+        eval="[ref('grade_scale_primary')]"
+    />
+
+    <!-- ============================================================
+         Grade Scale 2: Optional Grade Scale (partial, kept in draft)
+         ============================================================ -->
+    <record id="grade_scale_optional" model="grade.scale">
+        <field name="name">Optional Grade Scale</field>
+        <field name="gpa_calculation" eval="False" />
+    </record>
+
+    <record id="grade_scale_optional_line_a_plus" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_optional" />
+        <field name="symbol">A+</field>
+        <field name="max_percent">100.00</field>
+        <field name="min_percent">95.00</field>
+        <field name="points">10.00</field>
+        <field name="symbol_condition">Outstanding</field>
+        <field name="effort">excellent</field>
+    </record>
+
+    <record id="grade_scale_optional_line_a" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_optional" />
+        <field name="symbol">A</field>
+        <field name="max_percent">94.99</field>
+        <field name="min_percent">85.00</field>
+        <field name="points">9.00</field>
+        <field name="symbol_condition">Excellent</field>
+        <field name="effort">good</field>
+    </record>
+
+    <record id="grade_scale_optional_line_b_plus" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_optional" />
+        <field name="symbol">B+</field>
+        <field name="max_percent">84.99</field>
+        <field name="min_percent">75.00</field>
+        <field name="points">8.00</field>
+        <field name="symbol_condition">Very Good</field>
+        <field name="effort">satisfactory</field>
+    </record>
+
+    <record id="grade_scale_optional_line_b" model="grade.scale.line">
+        <field name="scale_id" ref="grade_scale_optional" />
+        <field name="symbol">B</field>
+        <field name="max_percent">74.99</field>
+        <field name="min_percent">65.00</field>
+        <field name="points">7.00</field>
+        <field name="symbol_condition">Good</field>
+        <field name="effort">poor</field>
+    </record>
+
+    <!-- Left in draft on purpose: lines only cover 65.00-100.00%,
+         so action_confirm would fail the 0.00% coverage check. -->
+</odoo>
