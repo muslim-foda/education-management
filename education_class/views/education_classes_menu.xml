@@ -1,0 +1,14 @@
+<odoo>
+    <menuitem
+        id="menu_class"
+        name="Classes"
+        parent="education_core.education_core_menu_root"
+        sequence="5"
+    />
+    <menuitem
+        id="menu_class_class"
+        name="Class"
+        parent="menu_class"
+        action="education_class_action"
+    />
+</odoo>

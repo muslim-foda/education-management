@@ -1,0 +1,17 @@
+<odoo>
+    <record id="view_grade_list" model="ir.ui.view">
+        <field name="name">class</field>
+        <field name="model">class</field>
+        <field name="arch" type="xml">
+            <list string="Grade">
+                <field name="name_class" />
+            </list>
+        </field>
+    </record>
+
+    <record id="education_class_action" model="ir.actions.act_window">
+        <field name="name">class</field>
+        <field name="res_model">class</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
