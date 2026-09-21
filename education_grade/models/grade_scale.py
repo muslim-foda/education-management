@@ -8,7 +8,7 @@ PERCENTAGE_DIGITS = (5, 2)
 class GradeScale(models.Model):
     _name = "grade.scale"
     _description = "Grade Scale"
-    _order = "name, id"
+    _order = "name"
 
     name = fields.Char(
         required=True,
