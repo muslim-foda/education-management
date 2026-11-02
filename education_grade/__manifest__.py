@@ -6,7 +6,10 @@
     "author": "Muslim Foda",
     "maintainer": "",
     "website": "https://github.com/muslim-foda/Education",
-    "depends": ["base", "education_core", "education_class"],
+    "depends": [
+        "base",
+        "education_core",
+    ],
     "data": [
         "security/ir.model.access.csv",
         "views/grade_scale_views.xml",

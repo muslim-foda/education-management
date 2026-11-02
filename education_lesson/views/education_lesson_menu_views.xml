@@ -1,0 +1,9 @@
+<odoo>
+    <menuitem
+        id="menu_lesson_plans"
+        name="Lesson Plans"
+        parent="education_core.education_teacher_menu_root"
+        action="lesson_plans_action"
+        sequence="5"
+    />
+</odoo>

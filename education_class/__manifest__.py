@@ -5,7 +5,7 @@
     "summary": "Auto-generated module",
     "author": "Muslim Foda",
     "website": "https://github.com/muslim-foda/Education",
-    "depends": ["base", "education_core", "education_base"],
+    "depends": ["base", "education_core", "education_base", "education_grade"],
     "data": [
         "security/ir.model.access.csv",
         "views/classes_views.xml",

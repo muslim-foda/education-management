@@ -1,0 +1,22 @@
+<odoo>
+    <record id="grade_subject_form_inherit_lesson" model="ir.ui.view">
+        <field name="name">grade.subject.form.lesson</field>
+        <field name="model">grade.subject</field>
+
+        <field name="inherit_id" ref="education_grade.view_grade_subject_form" />
+
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Lesson Plans">
+                    <field name="lesson_plan_ids">
+                        <list editable="bottom">
+                            <field name="name" />
+                            <field name="state" />
+                            <field name="responsible_id" />
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -6,11 +6,16 @@
         parent="education_core.education_core_menu_config"
         action="action_grade_scale"
     />
-
+    <menuitem
+        id="menu_classes"
+        name="Classes"
+        parent="education_core.education_core_menu_root"
+        sequence="5"
+    />
     <menuitem
         id="menu_grade"
         name="Grade"
-        parent="education_class.menu_class"
+        parent="menu_classes"
         action="action_grade"
         sequence="10"
     />
@@ -18,7 +23,7 @@
     <menuitem
         id="menu_grade_subject"
         name="SubJect"
-        parent="education_class.menu_class"
+        parent="menu_classes"
         action="grade_subject_action"
         sequence="11"
     />

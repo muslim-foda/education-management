@@ -1,0 +1,7 @@
+<odoo>
+    <record id="action_education_teacher" model="ir.actions.act_window">
+        <field name="name">Teachers</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+</odoo>

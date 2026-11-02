@@ -9,6 +9,18 @@
         action="student_action"
     />
 
+    <menuitem
+        id="education_teacher_menu_root"
+        name="Teachers"
+        parent="education_core_menu_root"
+    />
+    <menuitem
+        id="education_core_menu_student"
+        name="Teacher"
+        parent="education_teacher_menu_root"
+        action="action_education_teacher"
+    />
+
     <!-- menu_config -->
 
     <menuitem

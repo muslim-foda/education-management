@@ -6,10 +6,11 @@
     "author": "Muslim Foda",
     "maintainer": "",
     "website": "https://github.com/muslim-foda/Education",
-    "depends": ["base", "mail", "education_base"],
+    "depends": ["base", "mail", "education_base", "hr"],
     "data": [
         "security/ir.model.access.csv",
         "views/res_config_setting_view.xml",
+        "views/teacher_view.xml",
         "views/student_views.xml",
         "data/ir_sequence.xml",
         "menu/education_core_menu.xml",
