@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_class_attendance_tag_list" model="ir.ui.view">
+        <field name="name">class.attendance.tag.list</field>
+        <field name="model">class.attendance.tag</field>
+        <field name="arch" type="xml">
+            <list string="Attendance Tags">
+                <field name="name" />
+                <field name="color" widget="color_picker" />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_class_attendance_tag_form" model="ir.ui.view">
+        <field name="name">class.attendance.tag.form</field>
+        <field name="model">class.attendance.tag</field>
+        <field name="arch" type="xml">
+            <form string="Attendance Tag">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="color" widget="color_picker" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_class_attendance_tag" model="ir.actions.act_window">
+        <field name="name">Attendance Tags</field>
+        <field name="res_model">class.attendance.tag</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

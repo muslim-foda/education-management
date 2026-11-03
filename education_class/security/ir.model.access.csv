@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_class,name_class,model_class,,1,1,1,1
-access_lesson_plans,name_lesson_plans,model_lesson_plans,,1,1,1,1
+access_class_attendance_tag,name_class_attendance_tag,model_class_attendance_tag,,1,1,1,1
+access_class_attendance,name_class_attendance,model_class_attendance,,1,1,1,1

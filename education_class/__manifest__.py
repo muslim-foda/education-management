@@ -9,6 +9,8 @@
     "data": [
         "security/ir.model.access.csv",
         "views/classes_views.xml",
+        "views/class_attendance_views.xml",
+        "views/class_attendance_tag_views.xml",
         "views/education_classes_menu.xml",
     ],
     "assets": {},

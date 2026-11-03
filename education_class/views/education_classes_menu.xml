@@ -6,4 +6,12 @@
         action="education_class_action"
         sequence="6"
     />
+
+    <menuitem
+        id="menu_classes_class_attendance"
+        name="Class Attendance"
+        parent="menu_classes_class"
+        action="education_class_attendance_action"
+        sequence="5"
+    />
 </odoo>

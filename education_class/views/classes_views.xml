@@ -1,5 +1,5 @@
 <odoo>
-    <record id="view_grade_list" model="ir.ui.view">
+    <record id="view_class_list" model="ir.ui.view">
         <field name="name">class</field>
         <field name="model">class</field>
         <field name="arch" type="xml">
