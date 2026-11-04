@@ -30,4 +30,11 @@
         action="education_core_config_settings_action"
         sequence="100"
     />
+
+    <menuitem
+        id="education_core_menu_config_miscellaneous"
+        name="Miscellaneous"
+        parent="education_core_menu_config"
+        sequence="100"
+    />
 </odoo>

@@ -13,6 +13,7 @@
         "views/teacher_view.xml",
         "views/student_views.xml",
         "data/ir_sequence.xml",
+        "views/student_attendace_views.xml",
         "menu/education_core_menu.xml",
     ],
     "assets": {},

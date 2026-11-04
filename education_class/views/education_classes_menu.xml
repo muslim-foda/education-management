@@ -1,7 +1,7 @@
 <odoo>
     <menuitem
         id="menu_classes_class"
-        name="Class"
+        name=" Populate Class"
         parent="education_grade.menu_classes"
         action="education_class_action"
         sequence="6"
@@ -10,8 +10,16 @@
     <menuitem
         id="menu_classes_class_attendance"
         name="Class Attendance"
-        parent="menu_classes_class"
+        parent="education_grade.menu_classes"
         action="education_class_attendance_action"
+        sequence="5"
+    />
+
+    <menuitem
+        id="menu_classes_class_attendance_tag"
+        name="Attendance tags"
+        parent="education_core.education_core_menu_config_miscellaneous"
+        action="action_class_attendance_tag"
         sequence="5"
     />
 </odoo>

@@ -10,3 +10,4 @@ class ClassAttendanceTag(models.Model):
     )
 
     color = fields.Integer()
+    description = fields.Text()

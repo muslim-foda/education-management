@@ -19,15 +19,29 @@
         <field name="arch" type="xml">
             <form string="Attendance Tag">
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <label for="name" string="Name" />
+                            <field name="name" placeholder="Tardy..." />
+                        </h1>
+                    </div>
                     <group>
-                        <field name="name" />
-                        <field name="color" widget="color_picker" />
+                        <group string="Description">
+                            <field
+                                colspan="2"
+                                name="description"
+                                nolabel="1"
+                                placeholder="Description.."
+                            />
+                        </group>
+                        <group>
+                            <field name="color" required="True" widget="color_picker" />
+                        </group>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
-
     <!-- Action -->
     <record id="action_class_attendance_tag" model="ir.actions.act_window">
         <field name="name">Attendance Tags</field>
