@@ -5,7 +5,7 @@
     <menuitem
         id="education_core_menu_student"
         name="Stuednt"
-        parent="education_core_menu_root"
+        parent="menu_student"
         action="student_action"
     />
 
@@ -15,10 +15,25 @@
         parent="education_core_menu_root"
     />
     <menuitem
-        id="education_core_menu_student"
+        id="education_core_menu_teacher"
         name="Teacher"
         parent="education_teacher_menu_root"
         action="action_education_teacher"
+    />
+
+    <menuitem
+        id="menu_student"
+        name="Students"
+        parent="education_core_menu_root"
+        sequence="20"
+    />
+
+    <menuitem
+        id="education_core_menu_student_attendace"
+        name="Attendace"
+        parent="menu_student"
+        sequence="20"
+        action="student_attendance_action"
     />
 
     <!-- menu_config -->

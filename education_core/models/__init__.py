@@ -1,3 +1,3 @@
 from . import student
 from . import teacher
-from . import student_attendace
+from . import student_attendance
